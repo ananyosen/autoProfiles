@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string name="app_name">autoProfiles</string>
+        <string name="strwhite">Whitelisted</string>
+        <string name="strblack">Blacklisted</string>
+        <string name="wiTitle">Wifi Networks</string>
+        <string name="btnDon">Done Changes</string>
+        <string name="strSettTtile">::Preferences</string>
+        <string name="strSettAud">Audio Profiles</string>
+        <string name="strSettAudMod">Blacklisted Mode</string>
+        <string name="btnCnc">Cancel</string>
+        <string name="btnClr">Clear All</string>
+</resources>
