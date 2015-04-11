@@ -83,7 +83,7 @@ public class profileMan extends Service
         {
                 public void onReceive(Context c, Intent intent)
                 {
-                        makeToast("scan");
+                        //makeToast("scan");
                         sPref = getSharedPreferences(launchActivity.appKey, MODE_PRIVATE);
                         strB = sPref.getStringSet(wifiList.keyBlack, strB);
                         strW = sPref.getStringSet(wifiList.keyWhite, strW);
