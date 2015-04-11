@@ -11,6 +11,7 @@ import android.widget.Toast;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Timer;
 
 /**
  * Created by Ananyo on 4/10/2015.
@@ -38,8 +39,17 @@ public class profileMan extends Service
                 auMan =(AudioManager) getSystemService(Context.AUDIO_SERVICE);
                 registerReceiver(mRecv, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
                 makeToast("service created");
-                mWifi.startScan();
+                if (mWifi.isWifiEnabled())
+                {
+                        mWifi.startScan();
+                }
         }
+
+//        @Override
+//        public void onDestroy()
+//        {
+//                makeToast("service destroyed by system");
+//        }
 
         void setLow()
         {
