@@ -8,10 +8,7 @@ import android.net.wifi.WifiManager;
 import android.os.IBinder;
 import android.widget.Toast;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.Timer;
+import java.util.*;
 
 /**
  * Created by Ananyo on 4/10/2015.
@@ -25,6 +22,21 @@ public class profileMan extends Service
         SharedPreferences sPref;
         Set<String> strB = new HashSet<String>(), strW = new HashSet<String>();
         int maxVol = 0;
+        Timer mTimer = new Timer();
+        public long period = 60000;
+        TimerTask mTask = new TimerTask()
+        {
+                @Override
+                public void run()
+                {
+                        WifiManager wiMan =(WifiManager) getSystemService(Context.WIFI_SERVICE);
+                        if (wiMan.isWifiEnabled())
+                        {
+                                wiMan.startScan();
+                        }
+                }
+        };
+
         @Override
         public IBinder onBind(Intent intent)
         {
@@ -38,18 +50,10 @@ public class profileMan extends Service
                 mRecv = new WReceiver();
                 auMan =(AudioManager) getSystemService(Context.AUDIO_SERVICE);
                 registerReceiver(mRecv, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+                mTimer.scheduleAtFixedRate(mTask, 0, period);
                 makeToast("service created");
-                if (mWifi.isWifiEnabled())
-                {
-                        mWifi.startScan();
-                }
+               // mWifi.startScan();
         }
-
-//        @Override
-//        public void onDestroy()
-//        {
-//                makeToast("service destroyed by system");
-//        }
 
         void setLow()
         {
@@ -79,6 +83,7 @@ public class profileMan extends Service
         {
                 public void onReceive(Context c, Intent intent)
                 {
+                        makeToast("scan");
                         sPref = getSharedPreferences(launchActivity.appKey, MODE_PRIVATE);
                         strB = sPref.getStringSet(wifiList.keyBlack, strB);
                         strW = sPref.getStringSet(wifiList.keyWhite, strW);

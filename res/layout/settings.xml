@@ -3,43 +3,31 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-        <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textAppearance="?android:attr/textAppearanceLarge"-->
-                <!--android:text="@string/strSettTtile"-->
-                <!--android:layout_marginLeft="10dp"-->
-                <!--android:textSize="30sp"-->
-                <!--android:id="@+id/textView" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"-->
-                <!--/>-->
-        <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-                <!--android:text="@string/strSettAud"-->
-                <!--android:textSize="25sp"-->
-                <!--android:layout_marginLeft="20dp"-->
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/strSettTtile"
+                android:layout_marginLeft="10dp"
+                android:textSize="30sp"
+                android:id="@+id/textView" android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+                />
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/strSettAud"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
 
-                <!--android:id="@+id/textView2" android:layout_below="@+id/textView" android:layout_alignParentLeft="true"/>-->
-        <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-                <!--android:text="@string/strSettAudMod"-->
-                <!--android:textSize="20sp"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:id="@+id/textView3"-->
-                <!--android:layout_below="@+id/textView2" android:layout_centerHorizontal="true"/>-->
-        <!--<RadioButton-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="New RadioButton"-->
-                <!--android:id="@+id/radioButton"-->
-                <!--android:layout_below="@+id/textView3" android:layout_alignRight="@+id/textView"/>-->
-        <!--<RadioButton-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="New RadioButton"-->
-                <!--android:id="@+id/radioButton2"-->
-                <!--android:layout_alignTop="@+id/radioButton" android:layout_toRightOf="@+id/textView"/>-->
+                android:id="@+id/textView2" android:layout_below="@+id/textView" android:layout_alignParentLeft="true"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/strSettAudMod"
+                android:textSize="20sp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/textView3"
+                android:layout_below="@+id/textView2" android:layout_centerHorizontal="true"/>
 </RelativeLayout>

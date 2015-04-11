@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:weightSum="1">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/wiTitle"
+                android:id="@+id/textViewWTitle" android:layout_gravity="center_horizontal"
+                android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+        <ScrollView
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="50dp"
+                >
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/linearParent"
+                        android:orientation="vertical">
+
+                </LinearLayout>
+        </ScrollView>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnDon"
+                android:id="@+id/buttonDn" android:layout_gravity="center_horizontal"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnCnc"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/buttonCnc" android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnClr"
+                android:layout_marginRight="10dp"
+                android:id="@+id/buttonClr" android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+
+</RelativeLayout>
