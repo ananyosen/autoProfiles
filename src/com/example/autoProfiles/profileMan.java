@@ -22,6 +22,9 @@ public class profileMan extends Service
         SharedPreferences sPref;
         Set<String> strB = new HashSet<String>(), strW = new HashSet<String>();
         int maxVol = 0;
+        int VIBRATE_MODE = 0, SILENT_MODE = 1;
+        int userMode = 0;
+        int userMaxVol = 0;
         Timer mTimer = new Timer();
         public long period = 60000;
         TimerTask mTask = new TimerTask()
@@ -58,25 +61,39 @@ public class profileMan extends Service
         void setLow()
         {
                 int currVol = auMan.getStreamVolume(AudioManager.STREAM_RING);
-                maxVol = auMan.getStreamMaxVolume(AudioManager.STREAM_RING);
+                userMode = sPref.getInt(settingsComp.blackKey, VIBRATE_MODE);
                 while(currVol != 0)
                 {
                         auMan.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_LOWER, AudioManager.FLAG_SHOW_UI);
                         currVol = auMan.getStreamVolume(AudioManager.STREAM_RING);
                 }
-                auMan.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+                if (auMan.getRingerMode() == AudioManager.RINGER_MODE_NORMAL)
+                {
+                        if (userMode == VIBRATE_MODE)
+                        {
+                                auMan.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+                        }
+                        else if(userMode == SILENT_MODE)
+                        {
+                                auMan.setRingerMode(AudioManager.RINGER_MODE_SILENT);
+                        }
+                }
         }
 
         void setHigh()
         {
                 int currVol = auMan.getStreamVolume(AudioManager.STREAM_RING);
                 maxVol = auMan.getStreamMaxVolume(AudioManager.STREAM_RING);
-                while(currVol != maxVol)
+                userMaxVol = sPref.getInt(settingsComp.volKey, maxVol);
+                while(currVol < userMaxVol)
                 {
                         auMan.adjustStreamVolume(AudioManager.STREAM_RING, AudioManager.ADJUST_RAISE, AudioManager.FLAG_SHOW_UI);
                         currVol = auMan.getStreamVolume(AudioManager.STREAM_RING);
                 }
-                auMan.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                if (auMan.getRingerMode() != AudioManager.RINGER_MODE_NORMAL)
+                {
+                        auMan.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                }
         }
 
         class WReceiver extends BroadcastReceiver

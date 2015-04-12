@@ -21,8 +21,8 @@ public class launchActivity extends Activity
          */
         String TAG = "aupro.launch";
         public static final String intent_key = "BLACK_WHITE";
-        Button bWhite, bBlack;
-        int requestResult = 391;
+        Button bWhite, bBlack, btnPref;
+        final int REQUEST_WLIST = 391, REQUEST_PREF = 641;
         public static final String appKey = "com.ananyo.autoprof";
         SharedPreferences sharedPref;
         SharedPreferences.Editor editor;
@@ -35,6 +35,7 @@ public class launchActivity extends Activity
                 setContentView(R.layout.main);
                 bWhite = (Button) findViewById(R.id.buttonWhite);
                 bBlack = (Button) findViewById(R.id.buttonBlack);
+                btnPref = (Button) findViewById(R.id.buttonPref);
                 sharedPref = getSharedPreferences(launchActivity.appKey, MODE_PRIVATE);
                 auMan = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
                 bWhite.setOnClickListener(new View.OnClickListener()
@@ -53,22 +54,35 @@ public class launchActivity extends Activity
                                 startForBlack();
                         }
                 });
-
+                btnPref.setOnClickListener(new View.OnClickListener()
+                {
+                        @Override
+                        public void onClick(View view)
+                        {
+                                startPref();
+                        }
+                });
                 startProfileMan();
+        }
+
+        void startPref()
+        {
+                Intent iPref = new Intent(launchActivity.this, settingsComp.class);
+                startActivityForResult(iPref, REQUEST_PREF);
         }
 
         void startForWhite()
         {
                 Intent i = new Intent(launchActivity.this, wifiList.class);
                 i.putExtra(intent_key, false);
-                startActivityForResult(i, requestResult);
+                startActivityForResult(i, REQUEST_WLIST);
         }
 
         void startForBlack()
         {
                 Intent i = new Intent(launchActivity.this, wifiList.class);
                 i.putExtra(intent_key, true);
-                startActivityForResult(i, requestResult);
+                startActivityForResult(i, REQUEST_WLIST);
         }
 
         void startProfileMan()
@@ -80,12 +94,16 @@ public class launchActivity extends Activity
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data)
         {
-                if (requestCode == requestResult)
+                if (requestCode == REQUEST_WLIST)
                 {
                         if (resultCode == RESULT_OK)
                         {
-                                makeToast("Done setting preferences");
+                                makeToast("Saved networks list");
                         }
+                }
+                if (requestCode == REQUEST_PREF)
+                {
+                        makeToast("Saved preferences");
                 }
         }
 

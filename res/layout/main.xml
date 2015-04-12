@@ -17,5 +17,11 @@
                 android:text="@string/strblack"
                 android:id="@+id/buttonBlack" android:layout_alignBottom="@+id/buttonWhite"
                 android:layout_alignParentRight="true" android:layout_marginRight="45dp"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btnPrefs"
+                android:id="@+id/buttonPref" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+                android:layout_marginBottom="33dp"/>
 </RelativeLayout>
 

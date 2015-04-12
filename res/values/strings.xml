@@ -10,4 +10,13 @@
         <string name="strSettAudMod">Blacklisted Mode</string>
         <string name="btnCnc">Cancel</string>
         <string name="btnClr">Clear All</string>
+        <string name="btnPrefs">Preferences</string>
+        <string name="maxVol">Max volume at normal mode</string>
+        <string name="btnDonePref">Done Changes</string>
+        <string name="settWlanM">Wireless Settings</string>
+        <string name="scanIntervText">Scan for Wifi networks every</string>
+        <string-array name="arrSpn">
+                <item>Vibrate</item>
+                <item>Silent</item>
+        </string-array>
 </resources>
